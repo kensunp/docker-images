@@ -3,6 +3,7 @@
 from flask import Flask
 from flask import request
 import os
+import json
 
 app = Flask(__name__)
 
@@ -11,8 +12,8 @@ app = Flask(__name__)
 def before_request():
     ip = request.remote_addr
     url = request.url
-    print(ip)
-    print(url)
+    print("userIP:"+ip)
+    print("requestURL:"+url)
 
 @app.route('/test/info')
 def index():
@@ -23,12 +24,12 @@ def index():
 #    return os.popen('ls').read()
 
 
-@app.route("/cmd/ip")
-def ip():
-    p = os.popen('ip a').readlines()
-    x = p.readlines()
-    print(x)
-    return str(x)
+@app.route("/cmd/<name>")
+def command_name(name):
+#    result = os.popen('%s') % name
+#    return result
+    return os.popen(name).read()
+    
 
 #if __name__ == '__main__':
 #    app.run(debug=True,host="0.0.0.0",port=5000)
