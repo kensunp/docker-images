@@ -1,0 +1,6 @@
+flask/.cache/
+flask/.ipython/
+flask/__pycache__/
+flask/.ash_history
+flask/.python_history
+flask/.viminfo
